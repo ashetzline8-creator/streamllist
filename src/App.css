@@ -1,0 +1,609 @@
+/* ========================================
+   StreamList - App.css
+   EZTechMovie
+   ======================================== */
+
+/* Basic Setup */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+/* Main Application */
+.app {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top right, #17233b 0%, transparent 35%),
+    #090d16;
+  color: #ffffff;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+}
+
+/* ========================================
+   Header
+   ======================================== */
+
+.header {
+  min-height: 90px;
+  padding: 18px 7%;
+  border-bottom: 1px solid #263044;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: rgba(9, 13, 22, 0.95);
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 27px;
+  letter-spacing: 2px;
+}
+
+.header h1 span {
+  color: #35d07f;
+}
+
+.header p {
+  margin: 4px 0 0;
+  color: #7d899e;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* My List Profile Area */
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #c8d0dd;
+  font-size: 14px;
+}
+
+.profile-icon {
+  color: #35d07f;
+  font-size: 23px;
+}
+
+/* ========================================
+   Main Content
+   ======================================== */
+
+main {
+  width: min(1100px, 88%);
+  margin: auto;
+}
+
+/* ========================================
+   Hero Section
+   ======================================== */
+
+.hero {
+  max-width: 800px;
+  padding: 85px 0 75px;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+
+  color: #35d07f;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.hero h2 {
+  max-width: 700px;
+  margin: 0;
+
+  font-size: clamp(42px, 7vw, 72px);
+  line-height: 1;
+  letter-spacing: -3px;
+}
+
+.hero h2 span {
+  color: #35d07f;
+}
+
+.description {
+  max-width: 580px;
+  margin: 25px 0;
+
+  color: #97a2b5;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* ========================================
+   Add Movie / Show Form
+   ======================================== */
+
+.add-form {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+
+  max-width: 720px;
+  margin-top: 30px;
+}
+
+.add-form input {
+  flex: 1;
+
+  min-width: 0;
+  padding: 17px 20px;
+
+  border: 1px solid #2c374b;
+  border-radius: 8px;
+  outline: none;
+
+  background-color: #111827;
+  color: #ffffff;
+
+  font-size: 15px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.add-form input:focus {
+  border-color: #35d07f;
+  box-shadow: 0 0 0 2px rgba(53, 208, 127, 0.12);
+}
+
+.add-form input::placeholder {
+  color: #68758a;
+}
+
+/* Add to List Button */
+.add-form button {
+  min-width: 155px;
+  padding: 0 22px;
+
+  border: none;
+  border-radius: 8px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+
+  background-color: #35d07f;
+  color: #07130c;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.add-form button:hover {
+  background-color: #45df8d;
+  transform: translateY(-1px);
+}
+
+.add-form button:active {
+  transform: translateY(0);
+}
+
+/* Material Add Icon */
+.add-form button .material-icons {
+  font-size: 20px;
+}
+
+/* ========================================
+   StreamList Section
+   ======================================== */
+
+.list-section {
+  padding: 15px 0 90px;
+}
+
+.list-heading {
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+
+  border-bottom: 1px solid #263044;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.list-heading h3 {
+  margin: 0;
+  font-size: 30px;
+}
+
+/* Number of Titles */
+.movie-count {
+  padding: 8px 13px;
+
+  border-radius: 20px;
+
+  background-color: #151d2b;
+  color: #8995a8;
+
+  font-size: 13px;
+}
+
+/* ========================================
+   Movie / Show Grid
+   ======================================== */
+
+.stream-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+/* Individual Card */
+.stream-card {
+  overflow: hidden;
+
+  border: 1px solid #263044;
+  border-radius: 12px;
+
+  background-color: #101621;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.stream-card:hover {
+  transform: translateY(-4px);
+  border-color: #35d07f;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Movie Poster Placeholder */
+.poster-placeholder {
+  height: 175px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background:
+    linear-gradient(
+      rgba(10, 16, 27, 0.25),
+      rgba(10, 16, 27, 0.85)
+    ),
+    linear-gradient(135deg, #25334d, #111827);
+}
+
+/* Play Button Circle */
+.poster-placeholder > .material-icons {
+  width: 55px;
+  height: 55px;
+
+  border: 2px solid #35d07f;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #35d07f;
+  font-size: 25px;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.stream-card:hover .poster-placeholder > .material-icons {
+  background-color: rgba(53, 208, 127, 0.08);
+  transform: scale(1.05);
+}
+
+/* ========================================
+   Card Information
+   ======================================== */
+
+.card-info {
+  min-height: 98px;
+  padding: 18px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.card-info h4 {
+  margin: 0 0 7px;
+
+  color: #ffffff;
+  font-size: 17px;
+}
+
+.card-info p {
+  margin: 0;
+
+  color: #758197;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ========================================
+   Delete Button
+   ======================================== */
+
+.delete-button {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+
+  padding: 0;
+
+  border: 1px solid #343e50;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: transparent;
+  color: #9ba5b6;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.delete-button .material-icons {
+  font-size: 19px;
+}
+
+.delete-button:hover {
+  border-color: #ff6161;
+  background-color: rgba(255, 97, 97, 0.08);
+  color: #ff6161;
+}
+
+/* ========================================
+   Empty StreamList
+   ======================================== */
+
+.empty-list {
+  padding: 70px 20px;
+
+  border: 1px dashed #374256;
+  border-radius: 12px;
+
+  text-align: center;
+
+  color: #8b97aa;
+}
+
+.empty-list > .material-icons {
+  margin-bottom: 10px;
+
+  color: #35d07f;
+  font-size: 48px;
+}
+
+.empty-list h3 {
+  margin: 5px 0 10px;
+
+  color: #ffffff;
+  font-size: 22px;
+}
+
+.empty-list p {
+  margin: 0;
+
+  color: #8b97aa;
+  font-size: 14px;
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+
+footer {
+  padding: 30px 7%;
+
+  border-top: 1px solid #263044;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: #59667a;
+  font-size: 12px;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* ========================================
+   Tablet
+   ======================================== */
+
+@media (max-width: 800px) {
+  .stream-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero {
+    padding-top: 60px;
+  }
+
+  .hero h2 {
+    letter-spacing: -2px;
+  }
+}
+
+/* ========================================
+   Mobile
+   ======================================== */
+
+@media (max-width: 600px) {
+  .header {
+    min-height: 75px;
+    padding: 15px 5%;
+  }
+
+  .header h1 {
+    font-size: 22px;
+  }
+
+  .profile {
+    display: none;
+  }
+
+  main {
+    width: 90%;
+  }
+
+  .hero {
+    padding: 50px 0;
+  }
+
+  .hero h2 {
+    font-size: 44px;
+    letter-spacing: -2px;
+  }
+
+  .description {
+    font-size: 15px;
+  }
+
+  /* Stack input and button */
+  .add-form {
+    flex-direction: column;
+  }
+
+  .add-form button {
+    min-height: 52px;
+    width: 100%;
+  }
+
+  /* One movie per row */
+  .stream-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .list-heading {
+    align-items: center;
+  }
+
+  .list-heading h3 {
+    font-size: 25px;
+  }
+
+  footer {
+    padding: 25px 5%;
+
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+  }
+}
+/* ========================================
+   Navigation Bar
+   ======================================== */
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav-bar a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  color: #97a2b5;
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  transition: color 0.2s ease;
+}
+
+.nav-bar a:hover {
+  color: #35d07f;
+}
+
+.nav-bar a.active {
+  color: #35d07f;
+}
+
+.nav-bar .material-icons {
+  font-size: 20px;
+}
+
+/* ========================================
+   About Page
+   ======================================== */
+
+.about-page {
+  max-width: 750px;
+  min-height: 70vh;
+  padding: 100px 0;
+}
+
+.about-page h2 {
+  margin: 0 0 25px;
+
+  color: #ffffff;
+
+  font-size: clamp(38px, 6vw, 60px);
+  line-height: 1.1;
+  letter-spacing: -2px;
+}
+
+.about-page p:not(.eyebrow) {
+  color: #97a2b5;
+
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+/* Mobile Navigation */
+
+@media (max-width: 600px) {
+  .nav-bar {
+    gap: 12px;
+  }
+
+  .nav-bar a {
+    font-size: 12px;
+  }
+
+  .nav-bar .material-icons {
+    font-size: 18px;
+  }
+
+  .about-page {
+    padding: 60px 0;
+  }
+}
