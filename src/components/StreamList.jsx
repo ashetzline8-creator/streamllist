@@ -1,6 +1,14 @@
 import StreamItem from "./StreamItem";
 
-function StreamList({ streamList, removeFromList }) {
+function StreamList({
+  streamList,
+  removeFromList,
+  toggleComplete,
+  updateTitle,
+}) {
+  const watchedCount = streamList.filter((item) => item.completed).length;
+  const remainingCount = streamList.length - watchedCount;
+
   return (
     <section className="list-section">
       <div className="list-heading">
@@ -9,8 +17,18 @@ function StreamList({ streamList, removeFromList }) {
           <h3>My StreamList</h3>
         </div>
 
-        <div className="movie-count">
-          {streamList.length} {streamList.length === 1 ? "title" : "titles"}
+        <div className="list-stats">
+          <div className="movie-count">
+            {streamList.length} {streamList.length === 1 ? "title" : "titles"}
+          </div>
+
+          <div className="watched-count">
+            {watchedCount} watched
+          </div>
+
+          <div className="remaining-count">
+            {remainingCount} remaining
+          </div>
         </div>
       </div>
 
@@ -20,6 +38,8 @@ function StreamList({ streamList, removeFromList }) {
             key={item.id}
             item={item}
             removeFromList={removeFromList}
+            toggleComplete={toggleComplete}
+            updateTitle={updateTitle}
           />
         ))}
       </div>

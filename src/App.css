@@ -1,9 +1,8 @@
 /* ========================================
    StreamList - App.css
-   EZTechMovie
+   Week 2
    ======================================== */
 
-/* Basic Setup */
 * {
   box-sizing: border-box;
 }
@@ -17,7 +16,6 @@ input {
   font: inherit;
 }
 
-/* Main Application */
 .app {
   min-height: 100vh;
   background:
@@ -28,18 +26,16 @@ input {
 }
 
 /* ========================================
-   Header
+   Header + Navigation
    ======================================== */
 
 .header {
   min-height: 90px;
   padding: 18px 7%;
   border-bottom: 1px solid #263044;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   background-color: rgba(9, 13, 22, 0.95);
 }
 
@@ -61,19 +57,30 @@ input {
   text-transform: uppercase;
 }
 
-/* My List Profile Area */
-.profile {
+.nav-bar {
   display: flex;
   align-items: center;
-  gap: 10px;
-
-  color: #c8d0dd;
-  font-size: 14px;
+  gap: 24px;
 }
 
-.profile-icon {
+.nav-bar a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #97a2b5;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.nav-bar a:hover,
+.nav-bar a.active {
   color: #35d07f;
-  font-size: 23px;
+}
+
+.nav-bar .material-icons {
+  font-size: 20px;
 }
 
 /* ========================================
@@ -86,7 +93,7 @@ main {
 }
 
 /* ========================================
-   Hero Section
+   Hero / Add Form
    ======================================== */
 
 .hero {
@@ -96,7 +103,6 @@ main {
 
 .eyebrow {
   margin: 0 0 12px;
-
   color: #35d07f;
   font-size: 12px;
   font-weight: 700;
@@ -106,7 +112,6 @@ main {
 .hero h2 {
   max-width: 700px;
   margin: 0;
-
   font-size: clamp(42px, 7vw, 72px);
   line-height: 1;
   letter-spacing: -3px;
@@ -119,40 +124,29 @@ main {
 .description {
   max-width: 580px;
   margin: 25px 0;
-
   color: #97a2b5;
   font-size: 17px;
   line-height: 1.7;
 }
 
-/* ========================================
-   Add Movie / Show Form
-   ======================================== */
-
 .add-form {
   display: flex;
   align-items: stretch;
   gap: 10px;
-
   max-width: 720px;
   margin-top: 30px;
 }
 
 .add-form input {
   flex: 1;
-
   min-width: 0;
   padding: 17px 20px;
-
   border: 1px solid #2c374b;
   border-radius: 8px;
   outline: none;
-
   background-color: #111827;
   color: #ffffff;
-
   font-size: 15px;
-
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease;
@@ -167,27 +161,20 @@ main {
   color: #68758a;
 }
 
-/* Add to List Button */
 .add-form button {
   min-width: 155px;
   padding: 0 22px;
-
   border: none;
   border-radius: 8px;
-
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 7px;
-
   background-color: #35d07f;
   color: #07130c;
-
   font-size: 14px;
   font-weight: 700;
-
   cursor: pointer;
-
   transition:
     background-color 0.2s ease,
     transform 0.2s ease;
@@ -198,11 +185,6 @@ main {
   transform: translateY(-1px);
 }
 
-.add-form button:active {
-  transform: translateY(0);
-}
-
-/* Material Add Icon */
 .add-form button .material-icons {
   font-size: 20px;
 }
@@ -218,12 +200,11 @@ main {
 .list-heading {
   margin-bottom: 25px;
   padding-bottom: 20px;
-
   border-bottom: 1px solid #263044;
-
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  gap: 20px;
 }
 
 .list-heading h3 {
@@ -231,16 +212,29 @@ main {
   font-size: 30px;
 }
 
-/* Number of Titles */
-.movie-count {
+.list-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.movie-count,
+.watched-count,
+.remaining-count {
   padding: 8px 13px;
-
   border-radius: 20px;
-
   background-color: #151d2b;
   color: #8995a8;
-
   font-size: 13px;
+}
+
+.watched-count {
+  color: #35d07f;
+}
+
+.remaining-count {
+  color: #d2a85a;
 }
 
 /* ========================================
@@ -253,19 +247,16 @@ main {
   gap: 22px;
 }
 
-/* Individual Card */
 .stream-card {
   overflow: hidden;
-
   border: 1px solid #263044;
   border-radius: 12px;
-
   background-color: #101621;
-
   transition:
     transform 0.2s ease,
     border-color 0.2s ease,
-    box-shadow 0.2s ease;
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .stream-card:hover {
@@ -274,14 +265,16 @@ main {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* Movie Poster Placeholder */
+.completed-card {
+  border-color: rgba(53, 208, 127, 0.4);
+  background-color: #0e1817;
+}
+
 .poster-placeholder {
   height: 175px;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   background:
     linear-gradient(
       rgba(10, 16, 27, 0.25),
@@ -290,92 +283,127 @@ main {
     linear-gradient(135deg, #25334d, #111827);
 }
 
-/* Play Button Circle */
 .poster-placeholder > .material-icons {
   width: 55px;
   height: 55px;
-
   border: 2px solid #35d07f;
   border-radius: 50%;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   color: #35d07f;
   font-size: 25px;
-
-  transition:
-    background-color 0.2s ease,
-    transform 0.2s ease;
-}
-
-.stream-card:hover .poster-placeholder > .material-icons {
-  background-color: rgba(53, 208, 127, 0.08);
-  transform: scale(1.05);
 }
 
 /* ========================================
-   Card Information
+   Card Content
    ======================================== */
 
 .card-info {
-  min-height: 98px;
+  min-height: 120px;
   padding: 18px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 15px;
 }
 
+.card-text {
+  flex: 1;
+  min-width: 0;
+}
+
 .card-info h4 {
   margin: 0 0 7px;
-
   color: #ffffff;
   font-size: 17px;
+  word-break: break-word;
 }
 
 .card-info p {
   margin: 0;
-
   color: #758197;
   font-size: 12px;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
+.completed-title {
+  text-decoration: line-through;
+  color: #7f8c83 !important;
+}
+
+.watched-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 10px;
+  padding: 5px 8px;
+  border-radius: 14px;
+  background-color: rgba(53, 208, 127, 0.1);
+  color: #35d07f;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.watched-label .material-icons {
+  font-size: 15px;
+}
+
 /* ========================================
-   Delete Button
+   Card Action Buttons
    ======================================== */
 
-.delete-button {
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.edit-button,
+.complete-button,
+.delete-button,
+.save-button,
+.cancel-button {
   width: 38px;
   height: 38px;
   flex-shrink: 0;
-
   padding: 0;
-
   border: 1px solid #343e50;
   border-radius: 50%;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   background: transparent;
   color: #9ba5b6;
-
   cursor: pointer;
-
   transition:
     border-color 0.2s ease,
     color 0.2s ease,
-    background-color 0.2s ease;
+    background-color 0.2s ease,
+    transform 0.2s ease;
 }
 
-.delete-button .material-icons {
+.edit-button .material-icons,
+.complete-button .material-icons,
+.delete-button .material-icons,
+.save-button .material-icons,
+.cancel-button .material-icons {
   font-size: 19px;
+}
+
+.edit-button:hover {
+  border-color: #67a8ff;
+  background-color: rgba(103, 168, 255, 0.08);
+  color: #67a8ff;
+}
+
+.complete-button:hover {
+  border-color: #35d07f;
+  background-color: rgba(53, 208, 127, 0.08);
+  color: #35d07f;
 }
 
 .delete-button:hover {
@@ -384,40 +412,99 @@ main {
   color: #ff6161;
 }
 
+.save-button:hover {
+  border-color: #35d07f;
+  background-color: rgba(53, 208, 127, 0.08);
+  color: #35d07f;
+}
+
+.cancel-button:hover {
+  border-color: #ff6161;
+  background-color: rgba(255, 97, 97, 0.08);
+  color: #ff6161;
+}
+
 /* ========================================
-   Empty StreamList
+   Edit Mode
+   ======================================== */
+
+.edit-area {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.edit-area input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #35d07f;
+  border-radius: 7px;
+  outline: none;
+  background-color: #0c121d;
+  color: #ffffff;
+}
+
+.edit-area input:focus {
+  box-shadow: 0 0 0 2px rgba(53, 208, 127, 0.12);
+}
+
+.edit-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+/* ========================================
+   Empty List
    ======================================== */
 
 .empty-list {
   padding: 70px 20px;
-
   border: 1px dashed #374256;
   border-radius: 12px;
-
   text-align: center;
-
   color: #8b97aa;
 }
 
 .empty-list > .material-icons {
   margin-bottom: 10px;
-
   color: #35d07f;
   font-size: 48px;
 }
 
 .empty-list h3 {
   margin: 5px 0 10px;
-
   color: #ffffff;
   font-size: 22px;
 }
 
 .empty-list p {
   margin: 0;
-
   color: #8b97aa;
   font-size: 14px;
+}
+
+/* ========================================
+   About Page
+   ======================================== */
+
+.about-page {
+  max-width: 750px;
+  min-height: 70vh;
+  padding: 100px 0;
+}
+
+.about-page h2 {
+  margin: 0 0 25px;
+  color: #ffffff;
+  font-size: clamp(38px, 6vw, 60px);
+  line-height: 1.1;
+  letter-spacing: -2px;
+}
+
+.about-page p:not(.eyebrow) {
+  color: #97a2b5;
+  font-size: 17px;
+  line-height: 1.8;
 }
 
 /* ========================================
@@ -426,13 +513,10 @@ main {
 
 footer {
   padding: 30px 7%;
-
   border-top: 1px solid #263044;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   color: #59667a;
   font-size: 12px;
 }
@@ -457,6 +541,15 @@ footer p {
   .hero h2 {
     letter-spacing: -2px;
   }
+
+  .list-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .list-stats {
+    justify-content: flex-start;
+  }
 }
 
 /* ========================================
@@ -467,14 +560,23 @@ footer p {
   .header {
     min-height: 75px;
     padding: 15px 5%;
+    align-items: flex-start;
+    gap: 18px;
+    flex-direction: column;
   }
 
   .header h1 {
     font-size: 22px;
   }
 
-  .profile {
-    display: none;
+  .nav-bar {
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .nav-bar a {
+    font-size: 12px;
   }
 
   main {
@@ -494,7 +596,6 @@ footer p {
     font-size: 15px;
   }
 
-  /* Stack input and button */
   .add-form {
     flex-direction: column;
   }
@@ -504,13 +605,12 @@ footer p {
     width: 100%;
   }
 
-  /* One movie per row */
   .stream-grid {
     grid-template-columns: 1fr;
   }
 
-  .list-heading {
-    align-items: center;
+  .card-actions {
+    flex-direction: row;
   }
 
   .list-heading h3 {
@@ -519,91 +619,8 @@ footer p {
 
   footer {
     padding: 25px 5%;
-
     flex-direction: column;
     align-items: flex-start;
     gap: 7px;
-  }
-}
-/* ========================================
-   Navigation Bar
-   ======================================== */
-
-.nav-bar {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-}
-
-.nav-bar a {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-
-  color: #97a2b5;
-  text-decoration: none;
-
-  font-size: 14px;
-  font-weight: 600;
-
-  transition: color 0.2s ease;
-}
-
-.nav-bar a:hover {
-  color: #35d07f;
-}
-
-.nav-bar a.active {
-  color: #35d07f;
-}
-
-.nav-bar .material-icons {
-  font-size: 20px;
-}
-
-/* ========================================
-   About Page
-   ======================================== */
-
-.about-page {
-  max-width: 750px;
-  min-height: 70vh;
-  padding: 100px 0;
-}
-
-.about-page h2 {
-  margin: 0 0 25px;
-
-  color: #ffffff;
-
-  font-size: clamp(38px, 6vw, 60px);
-  line-height: 1.1;
-  letter-spacing: -2px;
-}
-
-.about-page p:not(.eyebrow) {
-  color: #97a2b5;
-
-  font-size: 17px;
-  line-height: 1.8;
-}
-
-/* Mobile Navigation */
-
-@media (max-width: 600px) {
-  .nav-bar {
-    gap: 12px;
-  }
-
-  .nav-bar a {
-    font-size: 12px;
-  }
-
-  .nav-bar .material-icons {
-    font-size: 18px;
-  }
-
-  .about-page {
-    padding: 60px 0;
   }
 }
