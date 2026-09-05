@@ -21,6 +21,11 @@ function Header() {
           My List
         </NavLink>
 
+        <NavLink to="/movie-search">
+          <span className="material-icons">search</span>
+          Movie Search
+        </NavLink>
+
         <NavLink to="/about">
           <span className="material-icons">info</span>
           About

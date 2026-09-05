@@ -15,6 +15,11 @@ function About() {
         This application was developed with React and uses reusable
         components to create a simple and organized user experience.
       </p>
+
+      <p>
+        StreamList also allows users to search for movie information using
+        data retrieved from The Movie Database (TMDB).
+      </p>
     </section>
   );
 }

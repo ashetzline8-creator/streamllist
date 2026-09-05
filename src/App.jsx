@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router";
 import "./App.css";
 
@@ -6,13 +6,14 @@ import Header from "./components/Header";
 import AddMovie from "./components/AddMovie";
 import StreamList from "./components/StreamList";
 import About from "./components/About";
+import MovieSearch from "./components/MovieSearch";
 
 function App() {
   // Stores what the user is currently typing
   const [title, setTitle] = useState("");
 
-  // Stores all movies and shows in the user's StreamList
-  const [streamList, setStreamList] = useState([
+  // Starting titles used only when localStorage does not have a saved list
+  const defaultStreamList = [
     {
       id: 1,
       title: "Stranger Things",
@@ -31,9 +32,29 @@ function App() {
       type: "TV Series",
       completed: false,
     },
-  ]);
+  ];
 
-  // Adds a new movie or show to the StreamList
+  // Loads the saved StreamList from localStorage when the app starts
+  const [streamList, setStreamList] = useState(() => {
+    const savedList = localStorage.getItem("streamList");
+
+    if (savedList) {
+      try {
+        return JSON.parse(savedList);
+      } catch (error) {
+        console.error("Unable to load StreamList from localStorage:", error);
+      }
+    }
+
+    return defaultStreamList;
+  });
+
+  // Saves the StreamList to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("streamList", JSON.stringify(streamList));
+  }, [streamList]);
+
+  // Adds a new movie or show
   const addToList = () => {
     if (title.trim() === "") {
       return;
@@ -59,7 +80,7 @@ function App() {
     );
   };
 
-  // Marks a movie/show as watched or unwatched
+  // Marks a movie or show as watched or unwatched
   const toggleComplete = (id) => {
     setStreamList(
       streamList.map((item) =>
@@ -70,7 +91,7 @@ function App() {
     );
   };
 
-  // Updates the title when the user edits an item
+  // Updates a title when the user edits it
   const updateTitle = (id, newTitle) => {
     if (newTitle.trim() === "") {
       return;
@@ -125,8 +146,17 @@ function App() {
             }
           />
 
+          {/* Movie Search Page */}
+          <Route
+            path="/movie-search"
+            element={<MovieSearch />}
+          />
+
           {/* About Page */}
-          <Route path="/about" element={<About />} />
+          <Route
+            path="/about"
+            element={<About />}
+          />
         </Routes>
       </main>
 
