@@ -23,6 +23,11 @@ function StreamItem({
     setIsEditing(false);
   };
 
+  const startEdit = () => {
+    setEditTitle(item.title);
+    setIsEditing(true);
+  };
+
   return (
     <article
       className={`stream-card ${item.completed ? "completed-card" : ""}`}
@@ -93,7 +98,7 @@ function StreamItem({
           <div className="card-actions">
             <button
               className="edit-button"
-              onClick={() => setIsEditing(true)}
+              onClick={startEdit}
               aria-label={`Edit ${item.title}`}
               title="Edit title"
             >

@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 function MovieSearch() {
   const [searchTerm, setSearchTerm] = useState("");
   const [movies, setMovies] = useState([]);
   const [message, setMessage] = useState("");
+
+  // Tracks the most recent search so stale responses can be ignored
+  const latestRequestId = useRef(0);
 
   const searchMovies = async () => {
     if (searchTerm.trim() === "") {
@@ -11,6 +14,9 @@ function MovieSearch() {
       setMovies([]);
       return;
     }
+
+    const requestId = latestRequestId.current + 1;
+    latestRequestId.current = requestId;
 
     try {
       setMessage("Searching...");
@@ -33,14 +39,25 @@ function MovieSearch() {
 
       const data = await response.json();
 
-      setMovies(data.results);
+      // Ignore responses from searches that are no longer the latest one
+      if (requestId !== latestRequestId.current) {
+        return;
+      }
 
-      if (data.results.length === 0) {
+      const results = data.results ?? [];
+
+      setMovies(results);
+
+      if (results.length === 0) {
         setMessage("No movies were found.");
       } else {
         setMessage("");
       }
     } catch (error) {
+      if (requestId !== latestRequestId.current) {
+        return;
+      }
+
       console.error(error);
       setMessage("Something went wrong while searching TMDB.");
       setMovies([]);

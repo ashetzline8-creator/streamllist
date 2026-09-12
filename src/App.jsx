@@ -40,7 +40,13 @@ function App() {
 
     if (savedList) {
       try {
-        return JSON.parse(savedList);
+        const parsedList = JSON.parse(savedList);
+
+        if (Array.isArray(parsedList)) {
+          return parsedList;
+        }
+
+        console.error("Saved StreamList is not an array; using defaults.");
       } catch (error) {
         console.error("Unable to load StreamList from localStorage:", error);
       }
